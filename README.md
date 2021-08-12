@@ -1,4 +1,4 @@
 # Proyecto CompraloYa
 # Henry Gerardo Mata
-#Cristian Aquino 
-#Yorlin Rodriguez
+# Cristian Aquino 
+# Yorlin Rodriguez

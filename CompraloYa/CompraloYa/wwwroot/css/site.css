@@ -62,7 +62,7 @@ body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
-.footer {
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -71,12 +71,17 @@ body {
   background : #ff9000;
 }
 
-.container {
-
-    color : #000000;
-}
-
-.g{
+.cont {
+    color: #000000;
+}#m1 {
+     left:300px;
     
-   
+    background: #ff9000;
 }
+ #c1{
+     right:50px;
+     left:1000px;
+     background: #808080;
+ }
+
+

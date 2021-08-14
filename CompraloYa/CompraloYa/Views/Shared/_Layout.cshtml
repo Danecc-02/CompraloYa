@@ -12,83 +12,91 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-           
+
             <div class="container" id="im">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                
-                        <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="166" height="45" class="img-fluid"/>
-                   
+
+                    <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="166" height="45" class="img-fluid" />
+
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-              <partial name="_LoginPartial" />
+                <partial name="_LoginPartial" />
             </div>
         </nav>
 
-        <nav>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                   
-                    <li class="nav-link">
-                        <a  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i>Categorías <i class="fas fa-bars"></i></a>
-                        <ul class="dropdown">
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Joyerias" asp-action="Index"> Joyeria </a>
-                            </li>
-
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Oficinas" asp-action="Index"> Oficina</a>
-                            </li>
-
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Ropas" asp-action="Index"> Ropa</a>
-                            </li>
-
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="Tecnologias" asp-action="Index"> Tecnologia </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-link text-dark dropdown ">
-                        <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tipos</a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="TypeRopas" asp-action="Index"> Tipos de ropa </a>
-                            </li>
-
-                            <li class="nav-item btn-dark">
-                                <a class="nav-link text-white" asp-area="" asp-controller="TypeSends" asp-action="Index"> Tipos de envio</a>
-                            </li>
-
-                            <li class="nanv-item btn-dark">
-                                <a class="av-link text-white" asp-area="" asp-controller="TypeTecnologias" asp-action="Index"> Tipos de tecnologia</a>
-                            </li>
-
-                        </ul>
-
-
-
-                    </li>
 
 
 
 
 
-                </ul>
-               
-            </div>
-        </nav>
+
     </header>
+      <div id="m1">
+    <ul class="navbar-nav flex-grow-1 ">
+
+        <li class="nav-link">
+            <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías <i class="fas fa-bars"></i></a>
+            <ul class="dropdown">
+                <li>
+                    <a class="nav-link text-black" asp-area="" asp-controller="Joyerias" asp-action="Index"> Joyeria </a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-black" asp-area="" asp-controller="Oficinas" asp-action="Index"> Oficina</a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-black" asp-area="" asp-controller="Ropas" asp-action="Index"> Ropa</a>
+                </li>
+
+                <li>
+                    <a class="nav-link text-black" asp-area="" asp-controller="Tecnologias" asp-action="Index"> Tecnologia </a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-link text-dark dropdown ">
+            <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tipos</a>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li class="nav-item btn-dark">
+                    <a class="nav-link text-white" asp-area="" asp-controller="TypeRopas" asp-action="Index"> Tipos de ropa </a>
+                </li>
+
+                <li class="nav-item btn-dark">
+                    <a class="nav-link text-white" asp-area="" asp-controller="TypeSends" asp-action="Index"> Tipos de envio</a>
+                </li>
+
+                <li class="nanv-item btn-dark">
+                    <a class="av-link text-white" asp-area="" asp-controller="TypeTecnologias" asp-action="Index"> Tipos de tecnologia</a>
+                </li>
+
+            </ul>
+
+
+
+        </li>
+
+
+
+
+
+    </ul>
+</div>  
+      
+    
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" >
-        <div class="container" >
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container cont">
             &copy; 2021 - CompraloYa - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

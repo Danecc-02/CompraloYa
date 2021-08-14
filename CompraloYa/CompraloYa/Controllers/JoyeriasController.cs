@@ -6,23 +6,31 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CompraloYa.Data;
-using CompraloYa.Models;
+using System.Web;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
-namespace CompraloYa.Controllers
+namespace CompraloYa.Models
 {
     public class JoyeriasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public JoyeriasController(ApplicationDbContext context)
+        public JoyeriasController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Joyerias
         public async Task<IActionResult> Index()
         {
+
+
             var applicationDbContext = _context.Joyerias.Include(j => j.TypeSend);
+
+            
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -48,7 +56,7 @@ namespace CompraloYa.Controllers
         // GET: Joyerias/Create
         public IActionResult Create()
         {
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend");
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName");
             return View();
         }
 
@@ -57,15 +65,27 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdJoyeria,CodigoJoya,NombreJoya,DetalleJoya,Stock,PrecioJoya,IdSend")] Joyeria joyeria)
+        public async Task<IActionResult> Create([Bind("IdJoyeria,CodigoJoya,NombreJoya,DetalleJoya,Stock,PrecioJoya,IdSend,Img")] Joyeria joyeria)
         {
+            
             if (ModelState.IsValid)
             {
+                //Guardar Imagen en wwwroot
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(joyeria.Img.FileName);
+                string extension = Path.GetExtension(joyeria.Img.FileName);
+                joyeria.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await joyeria.Img.CopyToAsync(fileStream);
+                }
+                //insert record
                 _context.Add(joyeria);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", joyeria.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", joyeria.IdSend);
             return View(joyeria);
         }
 
@@ -82,7 +102,7 @@ namespace CompraloYa.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", joyeria.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", joyeria.IdSend);
             return View(joyeria);
         }
 
@@ -91,7 +111,7 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdJoyeria,CodigoJoya,NombreJoya,DetalleJoya,Stock,PrecioJoya,IdSend")] Joyeria joyeria)
+        public async Task<IActionResult> Edit(int id, [Bind("IdJoyeria,CodigoJoya,NombreJoya,DetalleJoya,Stock,PrecioJoya,IdSend,Img")] Joyeria joyeria)
         {
             if (id != joyeria.IdJoyeria)
             {
@@ -118,13 +138,14 @@ namespace CompraloYa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", joyeria.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", joyeria.IdSend);
             return View(joyeria);
         }
 
         // GET: Joyerias/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -146,7 +167,18 @@ namespace CompraloYa.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+
+
             var joyeria = await _context.Joyerias.FindAsync(id);
+
+            //delete imagen from wwwroot
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", joyeria.ImageName);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+            //Delete the record
+
             _context.Joyerias.Remove(joyeria);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));

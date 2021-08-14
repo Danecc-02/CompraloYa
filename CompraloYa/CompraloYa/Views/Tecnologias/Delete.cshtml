@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.TypeTecnologia)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeTecnologia.IdTypeTecno)
+            @Html.DisplayFor(model => model.TypeTecnologia.TypeTecnoName)
         </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.DetalleJoya)
@@ -45,8 +45,14 @@
             @Html.DisplayNameFor(model => model.TypeSend)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeSend.IdSend)
+            @Html.DisplayFor(model => model.TypeSend.TypeSendName)
         </dd class>
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ImageName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ImageName)
+        </dd>*@
     </dl>
     
     <form asp-action="Delete">

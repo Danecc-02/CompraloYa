@@ -9,6 +9,8 @@ namespace CompraloYa.Models
     public class TypeRopa
     {
         [Key]
+
+        [Display(Name = "Tipo de Ropa")]
         public int IdTypeRopa { get; set; }
 
         [Display(Name = "Clase de Ropa")]

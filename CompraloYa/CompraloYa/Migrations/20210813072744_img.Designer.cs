@@ -4,19 +4,21 @@ using CompraloYa.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompraloYa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210813072744_img")]
+    partial class img
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.9")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("CompraloYa.Models.Joyeria", b =>
@@ -36,8 +38,8 @@ namespace CompraloYa.Migrations
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("Img")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("NombreJoya")
                         .IsRequired()
@@ -72,9 +74,6 @@ namespace CompraloYa.Migrations
 
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -112,9 +111,6 @@ namespace CompraloYa.Migrations
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("PrecioRopa")
                         .HasColumnType("decimal(18,2)");
 
@@ -149,9 +145,6 @@ namespace CompraloYa.Migrations
 
                     b.Property<int>("IdTypeTecno")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecioJoya")
                         .HasColumnType("decimal(18,2)");

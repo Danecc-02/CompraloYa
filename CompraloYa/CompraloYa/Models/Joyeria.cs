@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace CompraloYa.Models
 {
@@ -12,12 +14,18 @@ namespace CompraloYa.Models
         [Key]
         public int IdJoyeria { get; set; }
 
+        [Display(Name = "Código Artículo")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public string CodigoJoya { get; set; }
 
+        [Display(Name = "Nombre Artículo")]
         [Required(ErrorMessage = "Este campo es obligatorio")]
         public string NombreJoya { get; set; }
+
+        [Display(Name = "Detalle")]
         public string DetalleJoya { get; set; }
+
+        [Display(Name = "Existencia")]
         public  int Stock { get; set; }
 
         [DataType(DataType.Currency)]
@@ -29,7 +37,14 @@ namespace CompraloYa.Models
         public int IdSend { get; set; }
 
         [ForeignKey("IdSend")]
-
+        [Display(Name = "Tipo de Envío")]
         public TypeSend TypeSend { get; set; }
+
+        [Display(Name = "Image Name")]
+        public string ImageName { get; set; }
+        [NotMapped]
+        [Display(Name = "Imagen del articulo")]
+
+        public IFormFile Img { get; set; }
     }
 }

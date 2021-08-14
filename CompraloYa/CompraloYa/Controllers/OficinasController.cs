@@ -7,16 +7,20 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CompraloYa.Data;
 using CompraloYa.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CompraloYa.Controllers
 {
     public class OficinasController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public OficinasController(ApplicationDbContext context)
+        public OficinasController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: Oficinas
@@ -48,7 +52,7 @@ namespace CompraloYa.Controllers
         // GET: Oficinas/Create
         public IActionResult Create()
         {
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend");
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName");
             return View();
         }
 
@@ -57,15 +61,27 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdOficina,CodigoOficina,Nombre,DetalleOficina,Stock,PrecioOficina,IdSend")] Oficina oficina)
+        public async Task<IActionResult> Create([Bind("IdOficina,CodigoOficina,Nombre,DetalleOficina,Stock,PrecioOficina,IdSend,Img")] Oficina oficina)
         {
             if (ModelState.IsValid)
             {
+                //Guardar Imagen en wwwroot
+                string wwwRootPath = _hostEnvironment.WebRootPath;
+                string fileName = Path.GetFileNameWithoutExtension(oficina.Img.FileName);
+                string extension = Path.GetExtension(oficina.Img.FileName);
+                oficina.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
+                using (var fileStream = new FileStream(path, FileMode.Create))
+                {
+                    await oficina.Img.CopyToAsync(fileStream);
+                }
+                //insert record
+
                 _context.Add(oficina);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", oficina.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", oficina.IdSend);
             return View(oficina);
         }
 
@@ -82,7 +98,7 @@ namespace CompraloYa.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", oficina.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", oficina.IdSend);
             return View(oficina);
         }
 
@@ -91,7 +107,7 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdOficina,CodigoOficina,Nombre,DetalleOficina,Stock,PrecioOficina,IdSend")] Oficina oficina)
+        public async Task<IActionResult> Edit(int id, [Bind("IdOficina,CodigoOficina,Nombre,DetalleOficina,Stock,PrecioOficina,IdSend,Img")] Oficina oficina)
         {
             if (id != oficina.IdOficina)
             {
@@ -118,7 +134,7 @@ namespace CompraloYa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", oficina.IdSend);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", oficina.IdSend);
             return View(oficina);
         }
 
@@ -147,9 +163,20 @@ namespace CompraloYa.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var oficina = await _context.Oficinas.FindAsync(id);
+
+            //delete imagen from wwwroot
+            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", oficina.ImageName);
+            if (System.IO.File.Exists(imagePath))
+            {
+                System.IO.File.Delete(imagePath);
+            }
+            //Delete the record
+
             _context.Oficinas.Remove(oficina);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+
+
         }
 
         private bool OficinaExists(int id)

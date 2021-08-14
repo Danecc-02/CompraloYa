@@ -9,6 +9,8 @@ namespace CompraloYa.Models
     public class TypeSend
     {
         [Key]
+
+        [Display(Name = "Tipo de Envío")]
         public int IdSend { get; set; }
 
         [Display(Name ="Tipo de Envio")]

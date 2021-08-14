@@ -9,6 +9,8 @@ namespace CompraloYa.Models
     public class TypeTecnologia
     {
         [Key]
+
+        [Display(Name = "Tipo Tecnologia")]
         public int IdTypeTecno { get; set; }
 
         [Display(Name = "Tipo Tecnologia")]

@@ -1,65 +1,45 @@
 ﻿@model IEnumerable<CompraloYa.Models.Oficina>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Oficina";
 }
 
-<h1>Index</h1>
+<h3>Oficina</h3>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Vender Articulo</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoOficina)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DetalleOficina)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Stock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PrecioOficina)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TypeSend)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+
+<tbody>
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CodigoOficina)
+                <div>   @Html.DisplayFor(modelItem => item.CodigoOficina) </div>
+
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
+                <div> @Html.DisplayFor(modelItem => item.Nombre)  </div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DetalleOficina)
+                <div> @Html.DisplayFor(modelItem => item.DetalleOficina)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Stock)
+                <div>   @Html.DisplayFor(modelItem => item.Stock)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PrecioOficina)
+                <div>@Html.DisplayFor(modelItem => item.PrecioOficina)</div>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeSend.IdSend)
+                <div>@Html.DisplayFor(modelItem => item.TypeSend.IdSend)</div>
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdOficina">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdOficina">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdOficina">Delete</a>
+                <img src="~/Image/@item.ImageName" class="rounded" width="100px" height="100px" asp-append-version="true" />
+            </td>
+            <td>
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.IdOficina">Detalle</a>
             </td>
         </tr>
-}
-    </tbody>
-</table>
+    }
+</tbody>
+

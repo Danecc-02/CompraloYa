@@ -4,14 +4,16 @@ using CompraloYa.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompraloYa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210813104519_Cambiando Imagen")]
+    partial class CambiandoImagen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,9 +37,6 @@ namespace CompraloYa.Migrations
 
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NombreJoya")
                         .IsRequired()
@@ -72,9 +71,6 @@ namespace CompraloYa.Migrations
 
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
@@ -112,9 +108,6 @@ namespace CompraloYa.Migrations
                     b.Property<int>("IdSend")
                         .HasColumnType("int");
 
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<decimal>("PrecioRopa")
                         .HasColumnType("decimal(18,2)");
 
@@ -149,9 +142,6 @@ namespace CompraloYa.Migrations
 
                     b.Property<int>("IdTypeTecno")
                         .HasColumnType("int");
-
-                    b.Property<string>("ImageName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("PrecioJoya")
                         .HasColumnType("decimal(18,2)");

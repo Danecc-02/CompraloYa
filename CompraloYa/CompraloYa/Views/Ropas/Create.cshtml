@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="CodigoRopa" class="control-label"></label>
@@ -33,12 +33,17 @@
                 <span asp-validation-for="PrecioRopa" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdRopa" class="control-label"></label>
+                <label asp-for="IdRopa" class="control-label">Tipo de Ropa</label>
                 <select asp-for="IdRopa" class ="form-control" asp-items="ViewBag.IdRopa"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IdSend" class="control-label"></label>
+                <label asp-for="IdSend" class="control-label">Tipo de envío</label>
                 <select asp-for="IdSend" class ="form-control" asp-items="ViewBag.IdSend"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Img" class="control-label"></label>
+                <input asp-for="Img"  />
+                <span asp-validation-for="Img" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -48,7 +53,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-dark">Regresar</a>
 </div>
 
 @section Scripts {

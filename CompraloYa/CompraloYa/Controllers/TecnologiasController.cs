@@ -49,8 +49,8 @@ namespace CompraloYa.Controllers
         // GET: Tecnologias/Create
         public IActionResult Create()
         {
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend");
-            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "IdTypeTecno");
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName");
+            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "TypeTecnoName");
             return View();
         }
 
@@ -59,7 +59,7 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTecno,CodigoTecno,IdTypeTecno,DetalleJoya,Stock,PrecioJoya,IdSend")] Tecnologia tecnologia)
+        public async Task<IActionResult> Create([Bind("IdTecno,CodigoTecno,IdTypeTecno,DetalleJoya,Stock,PrecioJoya,IdSend,ImageName")] Tecnologia tecnologia)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +67,8 @@ namespace CompraloYa.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", tecnologia.IdSend);
-            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "IdTypeTecno", tecnologia.IdTypeTecno);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", tecnologia.IdSend);
+            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "TypeTecnoName", tecnologia.IdTypeTecno);
             return View(tecnologia);
         }
 
@@ -85,8 +85,8 @@ namespace CompraloYa.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", tecnologia.IdSend);
-            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "IdTypeTecno", tecnologia.IdTypeTecno);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", tecnologia.IdSend);
+            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "TypeTecnoName", tecnologia.IdTypeTecno);
             return View(tecnologia);
         }
 
@@ -95,7 +95,7 @@ namespace CompraloYa.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTecno,CodigoTecno,IdTypeTecno,DetalleJoya,Stock,PrecioJoya,IdSend")] Tecnologia tecnologia)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTecno,CodigoTecno,IdTypeTecno,DetalleJoya,Stock,PrecioJoya,IdSend,ImageName")] Tecnologia tecnologia)
         {
             if (id != tecnologia.IdTecno)
             {
@@ -122,8 +122,8 @@ namespace CompraloYa.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "IdSend", tecnologia.IdSend);
-            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "IdTypeTecno", tecnologia.IdTypeTecno);
+            ViewData["IdSend"] = new SelectList(_context.TypeSends, "IdSend", "TypeSendName", tecnologia.IdSend);
+            ViewData["IdTypeTecno"] = new SelectList(_context.TypeTecnologias, "IdTypeTecno", "TypeTecnoName", tecnologia.IdTypeTecno);
             return View(tecnologia);
         }
 

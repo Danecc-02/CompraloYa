@@ -12,10 +12,10 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
            
-            <div class="container">
+            <div class="container" id="im">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 
-                        <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="166" height="45" />
+                        <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="166" height="45" class="img-fluid"/>
                    
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -27,10 +27,10 @@
                         @*<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>*@
-                        <ul class="navbar-nav flex-grow-1">
+                        
 
-
-                            <li class="nav-link text-dark dropdown ">
+                            
+                            <li class="nav-link text-dark dropdown g">
                                 <a href="#" class="btn btn-outline-secondary dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bars"></i>Categorías</a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
                                     <li class="nav-item btn-dark">
@@ -54,8 +54,10 @@
                                 </ul>
 
 
-                                
+
                             </li>
+                           
+                           
 
 
                             <li class="nav-link text-dark dropdown ">
@@ -83,8 +85,8 @@
                                
                             </li>
 
-                        </ul>
                         
+                       
                        
                         @*<li class="nav-item">
             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -101,8 +103,8 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted" >
+        <div class="container" >
             &copy; 2021 - CompraloYa - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CompraloYa.Models.Tecnologia>
+
+@{
+    ViewData["Title"] = "Tecnologia";
+}
+
+<h3>Tecnología</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Vender Articulo</a>
+</p>
+
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.CodigoTecno)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.TypeTecnologia.IdTypeTecno)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.DetalleJoya)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.Stock)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.PrecioJoya)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.TypeSend.IdSend)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.ImageName)</div>
+            </td>
+            <td>
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.IdTecno">Detalle</a>
+            </td>
+        </tr>
+    }
+</tbody>
+

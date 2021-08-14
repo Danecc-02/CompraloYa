@@ -1,0 +1,43 @@
+﻿@model IEnumerable<CompraloYa.Models.Ropa>
+
+@{
+    ViewData["Title"] = "Ropa";
+}
+
+<h3>Ropa</h3>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Vender Articulo</a>
+</p>
+
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.CodigoRopa)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.Detalle)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.Stock)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.PrecioRopa)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.TypeRopa.IdTypeRopa)</div>
+            </td>
+            <td>
+                <div>@Html.DisplayFor(modelItem => item.TypeSend.IdSend)</div>
+            </td>
+            <td>
+                <img src="~/Image/@item.ImageName" class="rounded" width="100px" height="100px" asp-append-version="true" />
+            </td>
+            <td>
+                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.IdRopa">Detalle</a>
+            </td>
+        </tr>
+}
+    </tbody>
+

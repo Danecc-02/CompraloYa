@@ -3,12 +3,16 @@
 @{
     ViewData["Title"] = "Joyeria";
 }
+<link rel="stylesheet" href="~/css/Joyas.css" />
+<div id="h">
+    <h3 >Joyas</h3>
+    <p id="p1">
+        <a asp-action="Create" class="btn btn-success">Vender Articulo</a>
+    </p>
+</div>
+<hr />  
 
-<h3>Joyas</h3>
 
-<p>
-    <a asp-action="Create" class="btn btn-success">Vender Articulo</a>
-</p>
 
     <tbody>
 @foreach (var item in Model) {

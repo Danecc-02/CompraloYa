@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompraloYa.Migrations
 {
-    public partial class CargaInicial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -202,7 +202,8 @@ namespace CompraloYa.Migrations
                     DetalleJoya = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     PrecioJoya = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdSend = table.Column<int>(type: "int", nullable: false)
+                    IdSend = table.Column<int>(type: "int", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -226,7 +227,8 @@ namespace CompraloYa.Migrations
                     DetalleOficina = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     PrecioOficina = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdSend = table.Column<int>(type: "int", nullable: false)
+                    IdSend = table.Column<int>(type: "int", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -250,7 +252,8 @@ namespace CompraloYa.Migrations
                     Stock = table.Column<int>(type: "int", nullable: false),
                     PrecioRopa = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IdRopa = table.Column<int>(type: "int", nullable: false),
-                    IdSend = table.Column<int>(type: "int", nullable: false)
+                    IdSend = table.Column<int>(type: "int", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -280,7 +283,8 @@ namespace CompraloYa.Migrations
                     DetalleJoya = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     PrecioJoya = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IdSend = table.Column<int>(type: "int", nullable: false)
+                    IdSend = table.Column<int>(type: "int", nullable: false),
+                    ImageName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

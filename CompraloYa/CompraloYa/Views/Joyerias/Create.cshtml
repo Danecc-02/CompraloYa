@@ -1,14 +1,14 @@
 ﻿@model CompraloYa.Models.Joyeria
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Producto";
 }
-
-<h1>Create</h1>
+<link rel="stylesheet" href="~/css/Joyas.css" />
+<h1 class="h1">Create Producto</h1>
 
 <h4>Joyeria</h4>
 <hr />
-<div class="row">
+<div class="row" id="creatediv">
     <div class="col-md-4">
         <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

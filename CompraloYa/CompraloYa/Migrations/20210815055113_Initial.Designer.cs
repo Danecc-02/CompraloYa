@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompraloYa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210814021014_Envio")]
-    partial class Envio
+    [Migration("20210815055113_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

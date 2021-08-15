@@ -4,90 +4,63 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CompraYa</title>
+    <link rel="shortcut icon" href="~/png.png"/>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
-    <link rel=”icon icon" type="image/x-icon" href=”CompraYa.ico” />
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-
-            <div class="container" id="im">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-
-                    <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="166" height="45" class="img-fluid" />
-
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <partial name="_LoginPartial" />
-            </div>
-        </nav>
 
 
+    <div class="div3">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
 
+            <img src="https://cdn.discordapp.com/attachments/811795660449775647/875942273936936961/Compraya1.png" width="187" height="55" class="img-fluid" />
 
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
 
+    <div class="navbar-toggler div4">
+        <partial name="_LoginPartial" />
+       
+        
+    </div>
+    <div id="a2"><a asp-controller="TypeSends" asp-action="Index" class="btn "><i class="fas fa-plane-departure"></i> Envios</a></div>
 
+    <div class="div1" id="po1">
+        <ul class=" navbar-toggler nav-tabs">
+            <li>
+                <a> <i class="fas fa-bars"></i> Categorías</a>
+                <ul class="dropdown">
+                    <li>
+                        <a id="a1" class="nav-link " asp-area="" asp-controller="Joyerias" asp-action="Index"><i class="fas fa-gem"></i> Joyeria </a>
+                    </li>
 
-    </header>
-      <div id="m1">
-    <ul class="navbar-nav flex-grow-1 ">
+                    <li>
+                        <a id="a1" class="nav-link " asp-area="" asp-controller="Oficinas" asp-action="Index"><i class="fas fa-briefcase"></i> Oficina</a>
+                    </li>
 
-        <li class="nav-link">
-            <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorías <i class="fas fa-bars"></i></a>
-            <ul class="dropdown">
-                <li>
-                    <a class="nav-link text-black" asp-area="" asp-controller="Joyerias" asp-action="Index"> Joyeria </a>
-                </li>
+                    <li>
+                        <a id="a1" class="nav-link " asp-area="" asp-controller="Ropas" asp-action="Index"><i class="fas fa-tshirt"></i> Ropa</a>
+                    </li>
 
-                <li>
-                    <a class="nav-link text-black" asp-area="" asp-controller="Oficinas" asp-action="Index"> Oficina</a>
-                </li>
+                    <li>
+                        <a id="a1" class="nav-link " asp-area="" asp-controller="Tecnologias" asp-action="Index"><i class="fas fa-laptop"></i> Tecnologia </a>
+                    </li>
+                </ul>
+            </li>
 
-                <li>
-                    <a class="nav-link text-black" asp-area="" asp-controller="Ropas" asp-action="Index"> Ropa</a>
-                </li>
-
-                <li>
-                    <a class="nav-link text-black" asp-area="" asp-controller="Tecnologias" asp-action="Index"> Tecnologia </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav-link text-dark dropdown ">
-            <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tipos</a>
-            <ul class="dropdown-menu dropdown-menu-dark">
-                <li class="nav-item btn-dark">
-                    <a class="nav-link text-white" asp-area="" asp-controller="TypeRopas" asp-action="Index"> Tipos de ropa </a>
-                </li>
-
-                <li class="nav-item btn-dark">
-                    <a class="nav-link text-white" asp-area="" asp-controller="TypeSends" asp-action="Index"> Tipos de envio</a>
-                </li>
-
-                <li class="nanv-item btn-dark">
-                    <a class="av-link text-white" asp-area="" asp-controller="TypeTecnologias" asp-action="Index"> Tipos de tecnologia</a>
-                </li>
-
-            </ul>
+        </ul>
+    </div>
 
 
 
-        </li>
-
-
-
-
-
-    </ul>
-</div>  
-      
-    
-
-    <div class="container">
+    <div class="container" id="principal">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

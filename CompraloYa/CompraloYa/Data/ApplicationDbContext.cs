@@ -20,5 +20,7 @@ namespace CompraloYa.Data
         public DbSet<TypeRopa> TypeRopas { get; set; }
         public DbSet<TypeSend> TypeSends { get; set; }
         public DbSet<TypeTecnologia> TypeTecnologias { get; set; }
+
+        public DbSet<Tarjetas> Tarjetas { get; set; }
     }
 }

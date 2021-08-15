@@ -1,5 +1,6 @@
 ﻿@model CompraloYa.Models.Joyeria
 
+
 @{
     ViewData["Title"] = "Details";
 }
@@ -48,11 +49,11 @@
 
         </dd>
         @*<dt class="col-sm-2">*@
-            @*@Html.DisplayNameFor(model => model.ImageName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>*@
+        @*@Html.DisplayNameFor(model => model.ImageName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageName)
+            </dd>*@
 
 
         <dd class="col-sm-10">
@@ -69,4 +70,5 @@
 <div>
 
     <a asp-action="Index" class="btn btn-dark">Regresar</a>
+    <a class="btn btn-dark" asp-controller="Tarjetas" asp-action="Verificacion"> COMPRAR <i class="fas fa-bell"></i></a>
 </div>

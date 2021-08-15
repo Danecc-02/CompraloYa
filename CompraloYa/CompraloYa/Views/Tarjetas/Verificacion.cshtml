@@ -1,0 +1,15 @@
+﻿<form method="post">
+
+    Numero tarjeta: <input type="text" name="tarjetanum" id="txtNombre" /><br />
+    Fecha Expiracion: <input type="text" name="fechaex" id="txtEdad" /><br />
+    VCC: <input type="text" name="vcctarjeta" id="txtvcctarjeta" /><br />
+    <button type="submit">Enviar información</button>
+
+</form>
+<hr />
+<h2>
+    Resultado: VCC: @ViewBag.VCC, Numero de tarjeta: @ViewBag.NumeroTar, Fecha: @ViewBag.FechaEx
+</h2>
+<h1>
+    Tarjeta num: @ViewData["numero_Tarjeta_en_db"], fecha: @ViewData["Fecha_en_db"], vcc: @ViewData["VCC_en_db"]
+</h1>

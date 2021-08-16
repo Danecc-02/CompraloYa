@@ -4,13 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - CompraYa</title>
-    <link rel="shortcut icon" href="~/png.png"/>
+    <link rel="shortcut icon" href="~/png.png" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.min.css" />
+    <script src="~/js/Search.js" asp-append-version="true"></script>
 
 </head>
-<body>
+<body >
 
 
     <div class="div3">
@@ -25,10 +26,20 @@
         </button>
     </div>
 
+    <div class="row search" id="search">
+        <div class="col-auto" >
+            <input type="text" class="form-control-plaintext" id="txt-search" placeholder="Buscar..." />
+        </div>
+        <div class="col-auto" id="col-auto">
+            <a class="btn btn-dark"  onclick="search_search()" id="search-link"><i class="fas fa-search"></i></a>
+           
+        </div>
+    </div>
+
     <div class="navbar-toggler div4">
         <partial name="_LoginPartial" />
-       
-        
+
+
     </div>
     <div id="a2"><a asp-controller="TypeSends" asp-action="Index" class="btn "><i class="fas fa-plane-departure"></i> Envios</a></div>
 

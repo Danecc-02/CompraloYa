@@ -9,13 +9,17 @@ using CompraloYa.Data;
 using System.Web;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using CompraloYa.Common;
 
 namespace CompraloYa.Models
 {
     public class JoyeriasController : Controller
     {
+        private readonly int RecordsPerPage = 10;
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
+
+        public Pagination<Joyeria> PaginationJoyeria { get; private set; }
 
         public JoyeriasController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
         {
@@ -24,14 +28,41 @@ namespace CompraloYa.Models
         }
 
         // GET: Joyerias
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(String search, int page = 0)
         {
+            int totalRecords = 0;
+            if (search == null)
+            {
+                search = "";
+            }
+            //Obtener los registros totales 
+            totalRecords = await _context.Joyerias.CountAsync(
+                    d => d.NombreJoya.Contains(search)
+                );
 
+            //Obtener datos
+            var joyerias = await _context.Joyerias
+                .Where(d => d.NombreJoya.Contains(search)).ToListAsync();
 
-            var applicationDbContext = _context.Joyerias.Include(j => j.TypeSend);
+            var departamentsResult = joyerias.OrderBy(x => x.NombreJoya)
+                .Skip((page - 1) * RecordsPerPage)
+                .Take(RecordsPerPage);
+            //Obtenerel total de paginas
+            var totalPage = (int)Math.Ceiling((double)totalRecords / RecordsPerPage);
 
-            
-            return View(await applicationDbContext.ToListAsync());
+            //Iniciar la clase de paginacion
+            PaginationJoyeria = new Pagination<Joyeria>()
+            {
+                RecordsPerPage = this.RecordsPerPage,
+                TotalRecords = totalRecords,
+                TotalPage = totalPage,
+                CurrentPage = page,
+                Search = search,
+                Result = departamentsResult
+            };
+
+            return View(PaginationJoyeria);
+
         }
 
         // GET: Joyerias/Details/5

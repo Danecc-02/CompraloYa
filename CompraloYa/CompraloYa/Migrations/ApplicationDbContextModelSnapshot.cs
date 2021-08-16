@@ -130,6 +130,24 @@ namespace CompraloYa.Migrations
                     b.ToTable("Ropas");
                 });
 
+            modelBuilder.Entity("CompraloYa.Models.Tarjetas", b =>
+                {
+                    b.Property<int>("VCCtarjeta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FechaExpiracion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroTarjeta")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VCCtarjeta");
+
+                    b.ToTable("Tarjetas");
+                });
+
             modelBuilder.Entity("CompraloYa.Models.Tecnologia", b =>
                 {
                     b.Property<int>("IdTecno")

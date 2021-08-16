@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompraloYa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210815055113_Initial")]
-    partial class Initial
+    [Migration("20210816012910_En chrome2")]
+    partial class Enchrome2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -130,6 +130,24 @@ namespace CompraloYa.Migrations
                     b.HasIndex("IdSend");
 
                     b.ToTable("Ropas");
+                });
+
+            modelBuilder.Entity("CompraloYa.Models.Tarjetas", b =>
+                {
+                    b.Property<int>("VCCtarjeta")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("FechaExpiracion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NumeroTarjeta")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("VCCtarjeta");
+
+                    b.ToTable("Tarjetas");
                 });
 
             modelBuilder.Entity("CompraloYa.Models.Tecnologia", b =>

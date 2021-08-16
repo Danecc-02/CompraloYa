@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompraloYa.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Enchrome2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,20 @@ namespace CompraloYa.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tarjetas",
+                columns: table => new
+                {
+                    VCCtarjeta = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    NumeroTarjeta = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FechaExpiracion = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tarjetas", x => x.VCCtarjeta);
                 });
 
             migrationBuilder.CreateTable(
@@ -398,6 +412,9 @@ namespace CompraloYa.Migrations
 
             migrationBuilder.DropTable(
                 name: "Ropas");
+
+            migrationBuilder.DropTable(
+                name: "Tarjetas");
 
             migrationBuilder.DropTable(
                 name: "Tecnologias");

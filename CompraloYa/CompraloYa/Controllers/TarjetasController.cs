@@ -168,22 +168,33 @@ namespace CompraloYa.Controllers
 
             if (tarjetasV == null)
             {
-                return Ok("Tarjeta denegada id no existe");
+                return RedirectToAction(nameof(ErrorTarjeta));
             }
             if (tarjetanum == tarjetasV.NumeroTarjeta && fechaex == tarjetasV.FechaExpiracion && vcctarjeta == tarjetasV.VCCtarjeta)
             {
-                return Ok("SIII");
+                return RedirectToAction(nameof(TarjetaAceptada));
 
             }
             else
             {
-                return Ok("datos incorrectos");
+                return RedirectToAction(nameof(ErrorTarjeta));
 
             }
             
 
             return View();
         }
+        public IActionResult ErrorTarjeta()
+        {
+            return View();
+        }
+
+        public IActionResult TarjetaAceptada()
+        {
+            return View();
+        }
+
+      
     }
 }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

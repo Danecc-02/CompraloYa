@@ -1,9 +1,9 @@
-﻿@model CompraloYa.Common.Pagination<Joyeria>
+﻿@model CompraloYa.Common.Pagination<Joyeria> 
 
 @{
     ViewData["Title"] = "Joyeria";
 }
-<link rel="stylesheet" href="~/css/Joyas.css" />
+
 <div id="h">
     <h3>Joyas</h3>
     <p id="p1">
@@ -15,45 +15,75 @@
 
 
 
+<div class="divJoyas">
 
-    <div class="divJoyas">
-        @foreach (var item in Model.Result)
-        {
-        <tr>
 
-            <td>
-                <div> @Html.DisplayFor(modelItem => item.CodigoJoya)  </div>
+    @foreach (var item in Model.Result)
+    {
 
-            </td>
-            <td>
-                <div> @Html.DisplayFor(modelItem => item.NombreJoya)  </div>
-            </td>
-            <td>
-                <div> @Html.DisplayFor(modelItem => item.DetalleJoya) </div>
-            </td>
-            <td>
-                <div>@Html.DisplayFor(modelItem => item.Stock) </div>
 
-            </td>
-            <td>
-                <div> @Html.DisplayFor(modelItem => item.PrecioJoya)  </div>
-            </td>
-            <td>
-                <div>  @Html.DisplayFor(modelItem => item.TypeSend.IdSend) </div>
-            </td>
-            <td>
-                <img src="~/Image/@item.ImageName" class="rounded" width="100px" height="100px" asp-append-version="true" />
-            </td>
 
-            <td>
+    <div id="td">
 
-                <a asp-action="Details" class="btn btn-info" asp-route-id="@item.IdJoyeria">Detalle</a>
-            </td>
-        </tr>
-    }
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.Result.SingleOrDefault().CodigoJoya)
+            </b>
+            @Html.DisplayFor(modelItem => item.CodigoJoya)
+
+        </div>
+
+
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.Result.SingleOrDefault().NombreJoya)
+            </b>
+            @Html.DisplayFor(modelItem => item.NombreJoya)
+        </div>
+
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.Result.SingleOrDefault().DetalleJoya)
+            </b>
+            @Html.DisplayFor(modelItem => item.DetalleJoya)
+        </div>
+
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.Result.SingleOrDefault().Stock)
+            </b>
+            @Html.DisplayFor(modelItem => item.Stock)
+
+        </div>
+
+
+        <div>
+            <b>
+                @Html.DisplayNameFor(model => model.Result.SingleOrDefault().PrecioJoya)
+            </b>
+
+            @Html.DisplayFor(modelItem => item.PrecioJoya)
+
+        </div>
+
+        <div>  @Html.DisplayFor(modelItem => item.TypeSend.IdSend) </div>
+        <a id="btnD" asp-action="Details" class="btn btn-info" asp-route-id="@item.IdJoyeria">Detalle</a>
     </div>
 
-    
+
+
+        <img src="~/Image/@item.ImageName" class="rounded" asp-append-version="true" />
+
+
+
+
+       
+
+
+    }
+</div>
+
+
 <div id="Pagination">
     @if (Model.Result.Count() > 0)
     {
@@ -116,3 +146,4 @@
     }
 </div>
 <link rel="stylesheet" href="~/css/common.css" />
+<link rel="stylesheet" href="~/css/Joyas.css" />

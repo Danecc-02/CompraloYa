@@ -2,7 +2,7 @@
     /*background:#808080;*/
     margin-left: 30px;
     height: 70px;
-    font-size: 30px;
+    font-size: 20px;
     padding-left: 435px;
     margin-top:-25px;
     padding-top:20px;
@@ -17,7 +17,7 @@
 
 #Pagination{
 
-    margin-top: 300px;
+    margin-top: 1000px;
     padding-left:290px;
 
 
@@ -25,6 +25,59 @@
 
 .divJoyas{
 
-    background: #b6ff00;
+  /* background: #b6ff00;*/
+   width:550px;
+   height:222px;
+
+}
+.div3 {
+    width: 1560px;
+    height: 65px;
+    /* background: #d0cbcb;*/
+    padding-left: 100px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+#search {
+    margin-left: 500px;
+    margin-top: -65px;
+    width: 890px;
+    height: auto;
+    padding-top: 15px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+#col-auto {
+    padding-left: 285px;
+    height: 10px;
+}
+
+#txt-search {
+    margin-right: -300px;
+    height: -30px;
+    border: #ff0101;
+    width: 700px;
+    border-style: groove;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+#td{
+
+    margin-left:180px;
+}
+img {
+    margin-top:-290px;
+    width :150px;
+    height :150px;
+}
+#btnD{
+    margin-left:-140px;
+    margin-top:50px;
 
 }

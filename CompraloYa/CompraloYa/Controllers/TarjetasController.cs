@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CompraloYa.Data;
 using CompraloYa.Models;
+using Newtonsoft.Json.Linq;
 
 namespace CompraloYa.Controllers
 {

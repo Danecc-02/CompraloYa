@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CompraloYa.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210816012910_En chrome2")]
-    partial class Enchrome2
+    [Migration("20210817023238_Update")]
+    partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

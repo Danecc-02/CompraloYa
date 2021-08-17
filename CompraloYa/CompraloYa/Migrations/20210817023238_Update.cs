@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CompraloYa.Migrations
 {
-    public partial class Enchrome2 : Migration
+    public partial class Update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

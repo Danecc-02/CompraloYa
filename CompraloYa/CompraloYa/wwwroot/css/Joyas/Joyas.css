@@ -1,12 +1,22 @@
-﻿#h {
-    /*background:#808080;*/
+﻿html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+#h {
+  /*  background: #808080;*/
     margin-left: 30px;
     height: 70px;
     font-size: 20px;
     padding-left: 435px;
-    margin-top:-25px;
-    padding-top:20px;
-   width:1050px;
+    margin-top: -35px;
+    padding-top: 20px;
+    width: 1050px;
 }
 #p1{
     margin-left:450px;
@@ -23,6 +33,7 @@
 
 }
 
+
 .divJoyas{
 
   /* background: #b6ff00;*/
@@ -30,13 +41,13 @@
    height:222px;
 
 }
-.div3 {
+.div5 {
     width: 1560px;
     height: 65px;
-    /* background: #d0cbcb;*/
+     /*background: #d0cbcb;*/
     padding-left: 100px;
     margin-left: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 #search {
@@ -71,10 +82,10 @@
 
     margin-left:180px;
 }
-img {
-    margin-top:-290px;
-    width :150px;
-    height :150px;
+.rounded {
+    margin-top: -290px;
+    width: 160px;
+    height: 150px;
 }
 #btnD{
     margin-left:-140px;

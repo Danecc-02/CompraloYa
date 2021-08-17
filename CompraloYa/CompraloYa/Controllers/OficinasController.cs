@@ -33,6 +33,7 @@ namespace CompraloYa.Controllers
         // GET: Oficinas/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -46,7 +47,10 @@ namespace CompraloYa.Controllers
                 return NotFound();
             }
 
-            return View(oficina);
+            //return View(oficina);
+            return RedirectToAction("Verificacion", "Oficinas", new { key2 = id});
+
+
         }
 
         // GET: Oficinas/Create
@@ -183,5 +187,74 @@ namespace CompraloYa.Controllers
         {
             return _context.Oficinas.Any(e => e.IdOficina == id);
         }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        public ActionResult Verificacion()
+        {
+            return View();
+        }
+
+        //POST: Formualario
+        [HttpPost]
+        public async Task<IActionResult> Verificacion(string tarjetanum, int vcctarjeta, string fechaex, int idArtiOficina,int key2, string x, [Bind("IdTarjeta,NumeroTarjeta,FechaExpiracion,VCCtarjeta")] Tarjetas tarjetas)
+        {
+
+
+           
+
+
+
+
+            var tarjetasV = await _context.Tarjetas.FindAsync(vcctarjeta);
+
+            if (tarjetasV == null)
+            {
+                return RedirectToAction(nameof(ErrorTarjeta));
+            }
+            if (tarjetanum == tarjetasV.NumeroTarjeta && fechaex == tarjetasV.FechaExpiracion && vcctarjeta == tarjetasV.VCCtarjeta)
+            {
+                var oficina = await _context.Oficinas.FindAsync(key2);
+                if (oficina.Stock > 1)
+                {
+                    oficina.Stock = oficina.Stock - 1;
+                    _context.Update(oficina);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(TarjetaAceptada));
+
+                }
+
+                else if (oficina.Stock == 1)
+                {
+                    _context.Oficinas.Remove(oficina);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(TarjetaAceptada));
+
+                }
+
+               
+
+            }
+            else
+            {
+                return RedirectToAction(nameof(ErrorTarjeta));
+
+            }
+
+
+            return View();
+        }
+        public IActionResult ErrorTarjeta()
+        {
+            return View();
+        }
+
+        public IActionResult TarjetaAceptada()
+        {
+            return View();
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////
+
+    
+
+        /////////////////////////////////////////////////////////////////////////////////////////////
     }
 }

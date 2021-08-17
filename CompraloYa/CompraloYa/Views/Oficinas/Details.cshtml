@@ -9,61 +9,58 @@
 <div>
     <h4>Oficina</h4>
     <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoOficina)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.CodigoOficina)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DetalleOficina)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DetalleOficina)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Stock)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Stock)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PrecioOficina)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PrecioOficina)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.TypeSend)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TypeSend.TypeSendName)
-        </dd>
-        @*<dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ImageName)
-        </dd>*@
+    <div class="form-group">
+        <label asp-for="CodigoOficina" class="control-label"></label>
+        <input asp-for="CodigoOficina" class="form-control"  name="n"/>
+        <span asp-validation-for="CodigoOficina" class="text-danger"></span>
+    </div>
+
+</div>
+<div class="form-group">
+    <label asp-for="DetalleOficina" class="control-label"></label>
+    <input asp-for="DetalleOficina" class="form-control" />
+    <span asp-validation-for="DetalleOficina" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Stock" class="control-label"></label>
+    <input asp-for="Stock" class="form-control" />
+    <span asp-validation-for="Stock" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="PrecioOficina" class="control-label"></label>
+    <input asp-for="PrecioOficina" class="form-control" />
+    <span asp-validation-for="PrecioOficina" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="IdSend" class="control-label"></label>
+    <select asp-for="IdSend" class="form-control" asp-items="ViewBag.IdSend"></select>
+    <span asp-validation-for="IdSend" class="text-danger"></span>
+</div>
+<div class="form-group">
+    <label asp-for="Img" class="control-label"></label>
+    <input asp-for="Img" />
+    <span asp-validation-for="Img" class="text-danger"></span>
+</div>
+
+@*<dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ImageName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ImageName)
+    </dd>*@
 
 
-        <dd class="col-sm-10">
-            Imagen
-        </dd>
+<dd class="col-sm-10">
+    Imagen
+</dd>
 
-        <dd class="col-sm-10">
-            <img src="@("~/Image/"+Model.ImageName)" asp-append-version="true" width="250px" height="250px" />
-        </dd>
+<dd class="col-sm-10">
+    <img src="@("~/Image/"+Model.ImageName)" asp-append-version="true" width="250px" height="250px" />
+</dd>
 
     </dl>
 </div>
 <div>
     <a asp-action="Index" class="btn btn-dark">Regresar</a>
+    <a asp-action="Verificacion" class="btn btn-success">Comprar este articulo</a>
 </div>
